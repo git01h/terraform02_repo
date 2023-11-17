@@ -1,4 +1,4 @@
-properties([parameters([choice(choices: ['us-east-2', 'us-east-1', 'us-west-1'], description: 'Select in which region you want to deploy the resource ??', name: 'region')])])
+properties([parameters([choice(choices: ['us-east-2', 'us-east-1', 'us-west-1'], description: 'Select in which region you want to deploy the resource ??', name: 'rg_location')])])
 pipeline{
     
     agent any 
@@ -17,17 +17,17 @@ pipeline{
         }
          stage('terraform plan'){
             steps{
-                sh "terraform plan -var 'region=${params.region}'"
+                sh "terraform plan -var 'rg_location=${params.rg_location}'"
             }
         }
          stage('terraform apply'){
             steps{
-                 sh "terraform apply -var 'region=${params.region}' --auto-approve"
+                 sh "terraform apply -var 'rg_location=${params.rg_location}' --auto-approve"
             }
         }
         stage('terraform destroy'){
             steps{
-              sh "terraform destroy -var 'region=${params.region}' --auto-approve"
+              sh "terraform destroy -var 'rg_location=${params.rg_location}' --auto-approve"
             }
         }
     }
