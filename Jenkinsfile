@@ -13,9 +13,10 @@ pipeline{
         
         stage('git checkout'){
             steps{
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/git01h/terraform02_repo.git'
-            }
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/git01h/terraform02_repo.git']])
+                    }
         }
+        
         stage('terraform init'){
             steps{
                 sh 'terraform init'
@@ -38,3 +39,6 @@ pipeline{
         }
     }
 }
+
+
+                                                                                                   
