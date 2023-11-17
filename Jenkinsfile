@@ -7,7 +7,7 @@ pipeline{
         
         stage('git checkout'){
             steps{
-                git branch: 'main', url: 'https://github.com/vikash-kumar01/terraform_lab.git'
+                git branch: 'main', url: 'https://github.com/git01h/terraform02_repo.git'
             }
         }
         stage('terraform init'){
