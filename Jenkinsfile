@@ -31,9 +31,11 @@ pipeline{
                             tfCommand = 'terraform plan'
                             break
                         case 'Apply':
+                            tfCommand = 'terraform plan'
                             tfCommand = 'terraform apply'
                             break
                         case 'Destroy':
+                            tfCommand = 'terraform plan'
                             tfCommand = 'terraform destroy'
                             break
                         default:
