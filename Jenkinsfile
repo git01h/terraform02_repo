@@ -32,19 +32,18 @@ pipeline{
                             break
                         case 'Apply':
                             sh 'terraform plan'
-                            sh 'terraform apply'
+                            sh 'terraform apply --auto-approve'
                             break
                         case 'Destroy':
                             sh 'terraform plan'
-                            sh 'terraform destroy'
+                            sh 'terraform destroy --auto-approve'
                             break
                         default:
                             echo 'Invalid action selected.'
                             currentBuild.result = 'FAILURE'
                             return
                     }
-
-                    
+             
     }
 }
          }
