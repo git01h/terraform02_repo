@@ -25,7 +25,7 @@ pipeline{
          stage('Terraform Action') {
             steps {
                 script {
-                    def tfCommand = ''
+                    
                     switch (params.ACTION) {
                         case 'Plan':
                             tfCommand = 'terraform plan'
