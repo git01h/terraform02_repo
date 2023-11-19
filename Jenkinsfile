@@ -44,10 +44,7 @@ pipeline{
                         }
                             sh 'terraform destroy --auto-approve'
                             break
-                        // default:
-                        //     echo 'Invalid action selected.'
-                        //     currentBuild.result = 'FAILURE'
-                        //     return
+                        
                     }
              
     }
