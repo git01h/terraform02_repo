@@ -31,8 +31,9 @@ pipeline{
                             sh 'terraform plan'
                             break
                         case 'Apply':
-                            sh 'terraform plan'
-                            sh 'terraform apply --auto-approve'
+                            sh 'terraform plan -out=plan.out'
+                        input "please approve to proceed"
+                            sh 'terraform apply "plan.out"'
                             break
                         case 'Destroy':
                             sh 'terraform plan'
