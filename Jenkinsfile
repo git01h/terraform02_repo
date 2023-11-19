@@ -1,4 +1,4 @@
-properties([parameters([choice(choice(name: 'ACTION', choices: ['Plan', 'Apply', 'Destroy'], description: 'Select Terraform Action'))])])
+properties([parameters([choice(name: 'ACTION', choices: ['Plan', 'Apply', 'Destroy'], description: 'Select Terraform Action')])])
 pipeline{
     
     agent any 
