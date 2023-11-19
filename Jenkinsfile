@@ -32,7 +32,9 @@ pipeline{
                             break
                         case 'Apply':
                             sh 'terraform plan -out=plan.out'
+                        options{
                         timeout(time: 1, unit: 'MINUTES')
+                        }
                         input "Please approve to proceed Apply"
                             sh 'terraform apply "plan.out"'
                             break
