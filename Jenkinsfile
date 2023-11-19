@@ -36,9 +36,9 @@ pipeline{
                             sh 'terraform apply "plan.out"'
                             break
                         case 'Destroy':
-                            sh 'terraform plan'
+                            sh 'terraform plan -out=plan.out'
                         input "Please approve to proceed Destroy"
-                            sh 'terraform destroy'
+                            sh 'terraform destroy "plan.out"'
                             break
                         // default:
                         //     echo 'Invalid action selected.'
