@@ -26,7 +26,7 @@ pipeline{
             steps {
                 script {
                     
-                    switch (params.ACTION) {
+                    
                         case 'Plan':
                             tfCommand = 'terraform plan'
                             break
@@ -51,6 +51,6 @@ pipeline{
 }
          }
     }
-}
+
 
                                                                                                    
