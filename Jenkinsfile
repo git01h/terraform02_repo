@@ -45,7 +45,7 @@ pipeline{
                     }
 
                     if (params.ACTION == 'Apply' || params.ACTION == 'Destroy') {
-                        tfCommand += ' -auto-approve'
+                        sh ' -auto-approve'
                     }
     }
 }
