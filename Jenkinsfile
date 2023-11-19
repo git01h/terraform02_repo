@@ -44,9 +44,7 @@ pipeline{
                             return
                     }
 
-                    if (params.ACTION == 'Apply' || params.ACTION == 'Destroy') {
-                        sh ' -auto-approve'
-                    }
+                    sh """${params.ACTION == 'Apply' || params.ACTION == 'Destroy' ? '-auto-approve' : ''}"""
     }
 }
          }
