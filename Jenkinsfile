@@ -39,7 +39,9 @@ pipeline{
                             break
                         case 'Destroy':
                             sh 'terraform plan'
+                        timeout(time: 1, unit: 'MINUTES'){
                         input "Please approve to proceed Destroy"
+                        }
                             sh 'terraform destroy --auto-approve'
                             break
                         // default:
