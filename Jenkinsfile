@@ -1,4 +1,4 @@
-properties([parameters([choice(choices: ['uaenorth','uksouth','ukwest'], description: 'Select in which region you want to deploy the resource ??', name: 'rg_location')])])
+properties([parameters([choice(choice(name: 'ACTION', choices: ['Plan', 'Apply', 'Destroy'], description: 'Select Terraform Action'))])])
 pipeline{
     
     agent any 
@@ -22,23 +22,33 @@ pipeline{
                 sh 'terraform init'
             }
         }
-         stage('terraform plan'){
-            steps{
-                sh "terraform plan -var 'rg_location=${params.rg_location}'"
-            }
-        }
-         stage('terraform apply'){
-            steps{
-                 sh "terraform apply -var 'rg_location=${params.rg_location}' --auto-approve"
-            }
-        }
-        stage('terraform destroy'){
-            steps{
-              sh "terraform destroy -var 'rg_location=${params.rg_location}' --auto-approve"
-            }
-        }
+         stage('Terraform Action') {
+            steps {
+                script {
+                    def tfCommand = ''
+                    switch (params.ACTION) {
+                        case 'Plan':
+                            tfCommand = 'terraform plan'
+                            break
+                        case 'Apply':
+                            tfCommand = 'terraform apply'
+                            break
+                        case 'Destroy':
+                            tfCommand = 'terraform destroy'
+                            break
+                        default:
+                            echo 'Invalid action selected.'
+                            currentBuild.result = 'FAILURE'
+                            return
+                    }
+
+                    if (params.ACTION == 'Apply' || params.ACTION == 'Destroy') {
+                        tfCommand += ' -auto-approve'
+                    }
     }
 }
-
+         }
+    }
+}
 
                                                                                                    
