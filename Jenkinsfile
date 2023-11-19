@@ -25,18 +25,18 @@ pipeline{
          stage('Terraform Action') {
             steps {
                 script {
-                    
-                    
+                    def tfCommand = ''
+                    switch (params.ACTION) {
                         case 'Plan':
-                            tfCommand = 'terraform plan'
+                            sh 'terraform plan'
                             break
                         case 'Apply':
-                            tfCommand = 'terraform plan'
-                            tfCommand = 'terraform apply'
+                            sh 'terraform plan'
+                            sh 'terraform apply'
                             break
                         case 'Destroy':
-                            tfCommand = 'terraform plan'
-                            tfCommand = 'terraform destroy'
+                            sh 'terraform plan'
+                            sh 'terraform destroy'
                             break
                         default:
                             echo 'Invalid action selected.'
@@ -51,6 +51,7 @@ pipeline{
 }
          }
     }
+}
 
 
                                                                                                    
