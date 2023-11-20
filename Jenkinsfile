@@ -32,6 +32,7 @@ pipeline{
                 script {
                             sh 'terraform plan'
                             break
+                    switch (params.ACTION) {
                         case 'Apply':
                     stage('Terraform Apply') {
             steps {
@@ -42,6 +43,7 @@ pipeline{
                         }
                             sh 'terraform apply "plan.out"'
                             break
+                    switch (params.ACTION) {
                         case 'Destroy':
                     stage('Terraform Destroy') {
             steps {
@@ -67,8 +69,12 @@ pipeline{
                 }
             }
         }
+                    
+                }
+            }
+        }
     }
-}
+
     
 
 
