@@ -22,6 +22,9 @@ pipeline{
                 sh 'terraform init'
             }
         }
+        stage('Terraform Action') {
+            steps {
+                script {
                     switch (params.ACTION) {
                         case 'Plan':
                         stage('Terraform plan') {
@@ -63,7 +66,10 @@ pipeline{
              
     }
 }
-         
+        }
+    }
+}
+
     
 
 
