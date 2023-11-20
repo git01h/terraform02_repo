@@ -36,7 +36,7 @@ pipeline{
                 }
             }
                         
-                    switch (params.ACTION) {
+                    break
                         case 'Apply':
                     stage('Terraform Apply') {
             steps {
@@ -49,8 +49,8 @@ pipeline{
                             
                 }
             }
+                    break
                     
-                    switch (params.ACTION) {
                         case 'Destroy':
                     stage('Terraform Destroy') {
             steps {
@@ -63,7 +63,7 @@ pipeline{
                             
                 }
             }
-                    
+                    break
                     }
              
     }
@@ -74,8 +74,8 @@ pipeline{
         }
             }
 }                    
-    }
-}
+    
+
                 
 
     
