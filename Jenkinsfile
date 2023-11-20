@@ -20,6 +20,7 @@ pipeline{
         stage('terraform init'){
             steps{
                 sh 'terraform init'
+                break
             }
         }
         stage('Terraform Action') {
@@ -34,7 +35,7 @@ pipeline{
                             
                 }
             }
-                        }
+                        
                     switch (params.ACTION) {
                         case 'Apply':
                     stage('Terraform Apply') {
@@ -48,7 +49,7 @@ pipeline{
                             
                 }
             }
-                    }
+                    break
                     switch (params.ACTION) {
                         case 'Destroy':
                     stage('Terraform Destroy') {
@@ -62,7 +63,7 @@ pipeline{
                             
                 }
             }
-                    }
+                    break
                     }
              
     }
@@ -72,8 +73,9 @@ pipeline{
 }
         }
             }
-                        
-                
+}                    
+    }
+}
                 
 
     
