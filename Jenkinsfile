@@ -31,9 +31,6 @@ pipeline{
             steps {
                 script {
                             sh 'terraform plan'
-                
-            
-                        
                             break
                         case 'Apply':
                     stage('Terraform Apply') {
@@ -44,7 +41,6 @@ pipeline{
                         input "Please approve to proceed Apply"
                         }
                             sh 'terraform apply "plan.out"'
-                
                             break
                         case 'Destroy':
                     stage('Terraform Destroy') {
@@ -55,9 +51,6 @@ pipeline{
                         input "Please approve to proceed Destroy"
                         }
                             sh 'terraform destroy --auto-approve'
-                
-            
-                    
                             break
                         
                     }
