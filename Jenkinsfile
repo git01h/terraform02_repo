@@ -32,6 +32,9 @@ pipeline{
                 script {
                             sh 'terraform plan'
                             break
+                }
+            }
+                        }
                     switch (params.ACTION) {
                         case 'Apply':
                     stage('Terraform Apply') {
@@ -43,6 +46,9 @@ pipeline{
                         }
                             sh 'terraform apply "plan.out"'
                             break
+                }
+            }
+                    }
                     switch (params.ACTION) {
                         case 'Destroy':
                     stage('Terraform Destroy') {
@@ -54,7 +60,9 @@ pipeline{
                         }
                             sh 'terraform destroy --auto-approve'
                             break
-                        
+                }
+            }
+                    }
                     }
              
     }
@@ -64,16 +72,9 @@ pipeline{
 }
         }
             }
-                        }
-                    }
-                }
-            }
-        }
-                    
-                }
-            }
-        }
-    }
+                        
+                
+                
 
     
 
