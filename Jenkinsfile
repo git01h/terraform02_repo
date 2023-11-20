@@ -35,8 +35,10 @@ pipeline{
                             
                 }
             }
+                        }
+                    }
                         
-                    break
+                    switch (params.ACTION) {
                         case 'Apply':
                     stage('Terraform Apply') {
             steps {
@@ -49,8 +51,10 @@ pipeline{
                             
                 }
             }
-                    break
+                    }
+                    }
                     
+                    switch (params.ACTION) {
                         case 'Destroy':
                     stage('Terraform Destroy') {
             steps {
@@ -63,17 +67,14 @@ pipeline{
                             
                 }
             }
-                    break
+                    }
+                    }
                     }
              
     }
 }
         }
-    }
-}
-        }
-            }
-}                    
+    }                   
     
 
                 
