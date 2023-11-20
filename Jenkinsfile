@@ -22,26 +22,41 @@ pipeline{
                 sh 'terraform init'
             }
         }
-         stage('Terraform Action') {
-            steps {
-                script {
                     switch (params.ACTION) {
                         case 'Plan':
+                        stage('Terraform plan') {
+            steps {
+                script {
                             sh 'terraform plan'
+                }
+            }
+                        }
                             break
                         case 'Apply':
+                    stage('Terraform Apply') {
+            steps {
+                script {
                             sh 'terraform plan -out=plan.out'
                         timeout(time: 1, unit: 'MINUTES'){
                         input "Please approve to proceed Apply"
                         }
                             sh 'terraform apply "plan.out"'
+                }
+            }
+                    }
                             break
                         case 'Destroy':
+                    stage('Terraform Destroy') {
+            steps {
+                script {
                             sh 'terraform plan'
                         timeout(time: 1, unit: 'MINUTES'){
                         input "Please approve to proceed Destroy"
                         }
                             sh 'terraform destroy --auto-approve'
+                }
+            }
+                    }
                             break
                         
                     }
