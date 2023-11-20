@@ -31,7 +31,7 @@ pipeline{
             steps {
                 script {
                             sh 'terraform plan'
-                            break
+                            
                 }
             }
                         }
@@ -45,7 +45,7 @@ pipeline{
                         input "Please approve to proceed Apply"
                         }
                             sh 'terraform apply "plan.out"'
-                            break
+                            
                 }
             }
                     }
@@ -59,7 +59,7 @@ pipeline{
                         input "Please approve to proceed Destroy"
                         }
                             sh 'terraform destroy --auto-approve'
-                            break
+                            
                 }
             }
                     }
