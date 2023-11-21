@@ -23,9 +23,10 @@ pipeline{
                 
             }
         }
-        stage('Terraform Action') {
+        stage('Terraform Validate') {
             steps {
                 script {
+                    sh 'terraform validate'
                     switch (params.ACTION) {
                         case 'Plan':
                         stage('Terraform plan') {
