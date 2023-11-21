@@ -33,10 +33,10 @@ pipeline{
                 script {
                             sh 'terraform plan'
                             
-                }
-            }
-                        }
-                    }
+                
+            
+                        
+                    
                         
                     switch (params.APPLY) {
                         case 'Apply':
@@ -75,7 +75,11 @@ pipeline{
 }
         }
     }                 
-    
+            }
+        }
+    }
+}
+
 
                 
 
