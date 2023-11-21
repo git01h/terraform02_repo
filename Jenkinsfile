@@ -29,11 +29,10 @@ pipeline{
                     switch (params.PLAN) {
                         case 'Plan':
                         stage('Terraform plan') {
-            steps {
-                script {
+            
                             sh 'terraform plan'
                             
-                
+                        }
             
                         
                     
@@ -76,9 +75,9 @@ pipeline{
         }
     }                 
             }
-        }
-    }
-}
+        
+    
+
 
 
                 
