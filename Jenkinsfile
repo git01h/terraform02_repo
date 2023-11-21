@@ -3,7 +3,7 @@ pipeline{
     
     agent any 
     environment {
-       // Define environment variables for Azure credentials
+       //  environment variables for Azure credentials
         ARM_SUBSCRIPTION_ID = credentials('SUBSCRIPTION_ID')
         ARM_TENANT_ID = credentials('TENANT_ID')
         ARM_CLIENT_ID = credentials('CLIENT_ID')
