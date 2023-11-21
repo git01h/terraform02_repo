@@ -1,4 +1,4 @@
-properties([parameters([choice(name: 'ACTION', choices: ['Plan', 'Apply', 'Destroy'], description: 'Select Terraform Action')])])
+properties([parameters([choice(name: 'PLAN','APPLY','DESTROY', choices: ['Plan', 'Apply', 'Destroy'], description: 'Select Terraform Action')])])
 pipeline{
     
     agent any 
@@ -26,7 +26,7 @@ pipeline{
         stage('Terraform Action') {
             steps {
                 script {
-                    switch (params.ACTION) {
+                    switch (params.PLAN) {
                         case 'Plan':
                         stage('Terraform plan') {
             steps {
@@ -38,7 +38,7 @@ pipeline{
                         }
                     }
                         
-                    switch (params.ACTION) {
+                    switch (params.APPLY) {
                         case 'Apply':
                     stage('Terraform Apply') {
             steps {
@@ -54,7 +54,7 @@ pipeline{
                     }
                     }
                     
-                    switch (params.ACTION) {
+                    switch (params.DESTROY) {
                         case 'Destroy':
                     stage('Terraform Destroy') {
             steps {
